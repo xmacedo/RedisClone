@@ -43,4 +43,22 @@ public class RedisCloneController {
 
         return ResponseEntity.status(HttpStatus.OK).body("ok");
     }
+
+    @PostMapping("/mapset")
+    public ResponseEntity<?> mapSet(@RequestParam String mapKey, @RequestParam String key, @RequestParam String value) {
+        dataStoreService.mapSet(mapKey, key, value);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body("ok");
+    }
+
+    @GetMapping("/mapget")
+    public ResponseEntity<?> mapGet(@RequestParam String key, @RequestParam String value) {
+        return ResponseEntity.status(HttpStatus.OK).body(dataStoreService.mapGet(key, value));
+    }
+
+    @GetMapping("/mapkeys")
+    public ResponseEntity<?> mapKeys(@RequestParam String mapKey) {
+        return ResponseEntity.status(HttpStatus.OK).body(dataStoreService.mapKeys(mapKey));
+    }
+
 }

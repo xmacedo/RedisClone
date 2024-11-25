@@ -7,4 +7,5 @@ import java.util.Map;
 public class Store {
 
     private final Map<String, Object> store;
+    private final Map<String, Long> ttlStore;
 }
