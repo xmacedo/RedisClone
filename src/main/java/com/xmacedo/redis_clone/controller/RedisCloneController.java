@@ -60,5 +60,9 @@ public class RedisCloneController {
     public ResponseEntity<?> mapKeys(@RequestParam String mapKey) {
         return ResponseEntity.status(HttpStatus.OK).body(dataStoreService.mapKeys(mapKey));
     }
+    @GetMapping("/ttl")
+    public ResponseEntity<?> getTtl(@RequestParam String key) {
+        return ResponseEntity.status(HttpStatus.OK).body(dataStoreService.getRemainingTTL(key));
+    }
 
 }
